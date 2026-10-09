@@ -46,7 +46,7 @@ jobs:
 
   compilar-gba:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - name: Instalar dependências de compilação
@@ -100,12 +100,28 @@ jobs:
           python3 tools/bps.py verify --base /tmp/firered-original.gba --patch dist/pokemon-unova.bps
           sha256sum /tmp/firered-original.gba | sed 's@/tmp/firered-original.gba@firered-original.gba@' > dist/base-sha256.txt
           sha256sum dist/pokemon-unova.bps > dist/patch-sha256.txt
+      - name: Preparar ROM base retail-equivalente FireRed US 1.0 a partir de código-fonte
+        run: |
+          git clone --depth=1 https://github.com/pret/pokefirered.git /tmp/firered-retail
+          (cd /tmp/agbcc && ./install.sh /tmp/firered-retail)
+          make -C /tmp/firered-retail -j2
+          echo "41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc  /tmp/firered-retail/pokefirered.gba" | sha1sum --check --status
+          echo "ROM de referência FireRed US 1.0 reproduzida byte-a-byte"
+      - name: Criar patch aplicável ao FireRed US 1.0 original
+        run: |
+          python3 tools/bps.py create --base /tmp/firered-retail/pokefirered.gba --modified /tmp/firered-base/pokefirered.gba --output dist/pokemon-unova-firered-us-v1.bps
+          python3 tools/bps.py verify --base /tmp/firered-retail/pokefirered.gba --patch dist/pokemon-unova-firered-us-v1.bps
+          echo "41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc  pokefirered.gba" > dist/retail-base-sha1.txt
+          sha256sum dist/pokemon-unova-firered-us-v1.bps > dist/retail-patch-sha256.txt
       - name: Publicar SOMENTE patch BPS (nenhuma ROM)
         uses: actions/upload-artifact@v4
         with:
           name: pokemon-unova-bps
           path: |
             dist/pokemon-unova.bps
+            dist/pokemon-unova-firered-us-v1.bps
+            dist/retail-base-sha1.txt
+            dist/retail-patch-sha256.txt
             dist/base-sha256.txt
             dist/patch-sha256.txt
           retention-days: 7
