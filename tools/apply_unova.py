@@ -13,6 +13,7 @@ import shutil
 from collections import Counter
 from pathlib import Path
 from complete_encounters import guarantee_full_coverage
+from patch_pokedex import apply_regional_pokedex
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "unova_species.json"
@@ -480,9 +481,11 @@ def apply(game_dir, dry_run=False):
             path.write_text(patched, encoding="utf-8")
     static = patch_static_scripts(game_dir, available, mapping, dry_run)
     evolutions = apply_trade_evolutions(game_dir, dry_run)
+    pokedex = apply_regional_pokedex(game_dir, dry_run) if (game_dir / 'src/pokemon.c').exists() else {'status': 'not_available'}
     return {"dry_run": dry_run, "base": str(game_dir), "results": results,
             "static_events": static,
             "trade_evolutions": evolutions,
+            "regional_pokedex": pokedex,
             "notice": "Passagem inicial apenas; sem garantia de build, sprites, movesets ou campanha completa."}
 
 
