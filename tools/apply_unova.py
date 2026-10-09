@@ -377,7 +377,7 @@ def patch_trainers(text, available, mapping):
             start = found[j].end()
             end = found[j + 1].start() if j + 1 < len(found) else len(part)
             segment = part[start:end]
-            segment = re.sub(r"(?m)^-[ ]+[^\\r\\n]+\\r?\\n", "", segment)
+            segment = re.sub(r"(?m)^-[ ]+[^\r\n]+\r?\n", "", segment)
             part = part[:start] + segment + part[end:]
         output.append(part)
     return "".join(output), dict(changed), fallback
