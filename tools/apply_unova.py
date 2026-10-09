@@ -224,6 +224,7 @@ GYM_PARTIES = {
 }
 
 LAB_FILE = "data/maps/PalletTown_ProfessorOaksLab/scripts.inc"
+LAB_TEXT_FILE = "data/maps/PalletTown_ProfessorOaksLab/text.inc"
 WILD_FILE = "src/data/wild_encounters.json"
 TRAINERS_FILE = "src/data/trainers.party"
 MON_PATTERN = re.compile(r"(?m)^(?P<name>[A-Za-z][^\r\n:]*)\n(?=Level: \d+\b)")
@@ -291,6 +292,17 @@ def patch_lab(text):
     if sum(changed.values()) not in (0, 6):
         raise ValueError(f"Laboratório inesperado: {dict(changed)}")
     return text, dict(changed), 0
+
+
+
+def patch_lab_text(text):
+    """Atualiza nomes exibidos nos diálogos de escolha dos três iniciais."""
+    repl = {"CHARMANDER": "TEPIG", "SQUIRTLE": "OSHAWOTT", "BULBASAUR": "SNIVY"}
+    changes = Counter()
+    for source, target in repl.items():
+        changes[source] = text.count(source)
+        text = text.replace(source, target)
+    return text, dict(changes), 0
 
 
 def patch_wild(text, available, mapping):
@@ -443,6 +455,7 @@ def apply(game_dir, dry_run=False):
     mapping = get_replacements(available)
     transformations = (
         (LAB_FILE, lambda text: patch_lab(text)),
+        (LAB_TEXT_FILE, lambda text: patch_lab_text(text)),
         (WILD_FILE, lambda text: patch_wild(text, available, mapping)),
         (TRAINERS_FILE, lambda text: patch_trainers(text, available, mapping)),
     )
