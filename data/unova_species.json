@@ -1,0 +1,630 @@
+{
+  "origin": "Faceplantfloor/pokefirered-expansion include/constants/species.h",
+  "scope": "Geração V original, espécies nacionais 494-649; algumas constantes são formas padrão",
+  "species": [
+    {
+      "national_id": 494,
+      "symbol": "SPECIES_VICTINI"
+    },
+    {
+      "national_id": 495,
+      "symbol": "SPECIES_SNIVY"
+    },
+    {
+      "national_id": 496,
+      "symbol": "SPECIES_SERVINE"
+    },
+    {
+      "national_id": 497,
+      "symbol": "SPECIES_SERPERIOR"
+    },
+    {
+      "national_id": 498,
+      "symbol": "SPECIES_TEPIG"
+    },
+    {
+      "national_id": 499,
+      "symbol": "SPECIES_PIGNITE"
+    },
+    {
+      "national_id": 500,
+      "symbol": "SPECIES_EMBOAR"
+    },
+    {
+      "national_id": 501,
+      "symbol": "SPECIES_OSHAWOTT"
+    },
+    {
+      "national_id": 502,
+      "symbol": "SPECIES_DEWOTT"
+    },
+    {
+      "national_id": 503,
+      "symbol": "SPECIES_SAMUROTT"
+    },
+    {
+      "national_id": 504,
+      "symbol": "SPECIES_PATRAT"
+    },
+    {
+      "national_id": 505,
+      "symbol": "SPECIES_WATCHOG"
+    },
+    {
+      "national_id": 506,
+      "symbol": "SPECIES_LILLIPUP"
+    },
+    {
+      "national_id": 507,
+      "symbol": "SPECIES_HERDIER"
+    },
+    {
+      "national_id": 508,
+      "symbol": "SPECIES_STOUTLAND"
+    },
+    {
+      "national_id": 509,
+      "symbol": "SPECIES_PURRLOIN"
+    },
+    {
+      "national_id": 510,
+      "symbol": "SPECIES_LIEPARD"
+    },
+    {
+      "national_id": 511,
+      "symbol": "SPECIES_PANSAGE"
+    },
+    {
+      "national_id": 512,
+      "symbol": "SPECIES_SIMISAGE"
+    },
+    {
+      "national_id": 513,
+      "symbol": "SPECIES_PANSEAR"
+    },
+    {
+      "national_id": 514,
+      "symbol": "SPECIES_SIMISEAR"
+    },
+    {
+      "national_id": 515,
+      "symbol": "SPECIES_PANPOUR"
+    },
+    {
+      "national_id": 516,
+      "symbol": "SPECIES_SIMIPOUR"
+    },
+    {
+      "national_id": 517,
+      "symbol": "SPECIES_MUNNA"
+    },
+    {
+      "national_id": 518,
+      "symbol": "SPECIES_MUSHARNA"
+    },
+    {
+      "national_id": 519,
+      "symbol": "SPECIES_PIDOVE"
+    },
+    {
+      "national_id": 520,
+      "symbol": "SPECIES_TRANQUILL"
+    },
+    {
+      "national_id": 521,
+      "symbol": "SPECIES_UNFEZANT"
+    },
+    {
+      "national_id": 522,
+      "symbol": "SPECIES_BLITZLE"
+    },
+    {
+      "national_id": 523,
+      "symbol": "SPECIES_ZEBSTRIKA"
+    },
+    {
+      "national_id": 524,
+      "symbol": "SPECIES_ROGGENROLA"
+    },
+    {
+      "national_id": 525,
+      "symbol": "SPECIES_BOLDORE"
+    },
+    {
+      "national_id": 526,
+      "symbol": "SPECIES_GIGALITH"
+    },
+    {
+      "national_id": 527,
+      "symbol": "SPECIES_WOOBAT"
+    },
+    {
+      "national_id": 528,
+      "symbol": "SPECIES_SWOOBAT"
+    },
+    {
+      "national_id": 529,
+      "symbol": "SPECIES_DRILBUR"
+    },
+    {
+      "national_id": 530,
+      "symbol": "SPECIES_EXCADRILL"
+    },
+    {
+      "national_id": 531,
+      "symbol": "SPECIES_AUDINO"
+    },
+    {
+      "national_id": 532,
+      "symbol": "SPECIES_TIMBURR"
+    },
+    {
+      "national_id": 533,
+      "symbol": "SPECIES_GURDURR"
+    },
+    {
+      "national_id": 534,
+      "symbol": "SPECIES_CONKELDURR"
+    },
+    {
+      "national_id": 535,
+      "symbol": "SPECIES_TYMPOLE"
+    },
+    {
+      "national_id": 536,
+      "symbol": "SPECIES_PALPITOAD"
+    },
+    {
+      "national_id": 537,
+      "symbol": "SPECIES_SEISMITOAD"
+    },
+    {
+      "national_id": 538,
+      "symbol": "SPECIES_THROH"
+    },
+    {
+      "national_id": 539,
+      "symbol": "SPECIES_SAWK"
+    },
+    {
+      "national_id": 540,
+      "symbol": "SPECIES_SEWADDLE"
+    },
+    {
+      "national_id": 541,
+      "symbol": "SPECIES_SWADLOON"
+    },
+    {
+      "national_id": 542,
+      "symbol": "SPECIES_LEAVANNY"
+    },
+    {
+      "national_id": 543,
+      "symbol": "SPECIES_VENIPEDE"
+    },
+    {
+      "national_id": 544,
+      "symbol": "SPECIES_WHIRLIPEDE"
+    },
+    {
+      "national_id": 545,
+      "symbol": "SPECIES_SCOLIPEDE"
+    },
+    {
+      "national_id": 546,
+      "symbol": "SPECIES_COTTONEE"
+    },
+    {
+      "national_id": 547,
+      "symbol": "SPECIES_WHIMSICOTT"
+    },
+    {
+      "national_id": 548,
+      "symbol": "SPECIES_PETILIL"
+    },
+    {
+      "national_id": 549,
+      "symbol": "SPECIES_LILLIGANT"
+    },
+    {
+      "national_id": 550,
+      "symbol": "SPECIES_BASCULIN_RED_STRIPED"
+    },
+    {
+      "national_id": 551,
+      "symbol": "SPECIES_SANDILE"
+    },
+    {
+      "national_id": 552,
+      "symbol": "SPECIES_KROKOROK"
+    },
+    {
+      "national_id": 553,
+      "symbol": "SPECIES_KROOKODILE"
+    },
+    {
+      "national_id": 554,
+      "symbol": "SPECIES_DARUMAKA"
+    },
+    {
+      "national_id": 555,
+      "symbol": "SPECIES_DARMANITAN_STANDARD"
+    },
+    {
+      "national_id": 556,
+      "symbol": "SPECIES_MARACTUS"
+    },
+    {
+      "national_id": 557,
+      "symbol": "SPECIES_DWEBBLE"
+    },
+    {
+      "national_id": 558,
+      "symbol": "SPECIES_CRUSTLE"
+    },
+    {
+      "national_id": 559,
+      "symbol": "SPECIES_SCRAGGY"
+    },
+    {
+      "national_id": 560,
+      "symbol": "SPECIES_SCRAFTY"
+    },
+    {
+      "national_id": 561,
+      "symbol": "SPECIES_SIGILYPH"
+    },
+    {
+      "national_id": 562,
+      "symbol": "SPECIES_YAMASK"
+    },
+    {
+      "national_id": 563,
+      "symbol": "SPECIES_COFAGRIGUS"
+    },
+    {
+      "national_id": 564,
+      "symbol": "SPECIES_TIRTOUGA"
+    },
+    {
+      "national_id": 565,
+      "symbol": "SPECIES_CARRACOSTA"
+    },
+    {
+      "national_id": 566,
+      "symbol": "SPECIES_ARCHEN"
+    },
+    {
+      "national_id": 567,
+      "symbol": "SPECIES_ARCHEOPS"
+    },
+    {
+      "national_id": 568,
+      "symbol": "SPECIES_TRUBBISH"
+    },
+    {
+      "national_id": 569,
+      "symbol": "SPECIES_GARBODOR"
+    },
+    {
+      "national_id": 570,
+      "symbol": "SPECIES_ZORUA"
+    },
+    {
+      "national_id": 571,
+      "symbol": "SPECIES_ZOROARK"
+    },
+    {
+      "national_id": 572,
+      "symbol": "SPECIES_MINCCINO"
+    },
+    {
+      "national_id": 573,
+      "symbol": "SPECIES_CINCCINO"
+    },
+    {
+      "national_id": 574,
+      "symbol": "SPECIES_GOTHITA"
+    },
+    {
+      "national_id": 575,
+      "symbol": "SPECIES_GOTHORITA"
+    },
+    {
+      "national_id": 576,
+      "symbol": "SPECIES_GOTHITELLE"
+    },
+    {
+      "national_id": 577,
+      "symbol": "SPECIES_SOLOSIS"
+    },
+    {
+      "national_id": 578,
+      "symbol": "SPECIES_DUOSION"
+    },
+    {
+      "national_id": 579,
+      "symbol": "SPECIES_REUNICLUS"
+    },
+    {
+      "national_id": 580,
+      "symbol": "SPECIES_DUCKLETT"
+    },
+    {
+      "national_id": 581,
+      "symbol": "SPECIES_SWANNA"
+    },
+    {
+      "national_id": 582,
+      "symbol": "SPECIES_VANILLITE"
+    },
+    {
+      "national_id": 583,
+      "symbol": "SPECIES_VANILLISH"
+    },
+    {
+      "national_id": 584,
+      "symbol": "SPECIES_VANILLUXE"
+    },
+    {
+      "national_id": 585,
+      "symbol": "SPECIES_DEERLING_SPRING"
+    },
+    {
+      "national_id": 586,
+      "symbol": "SPECIES_SAWSBUCK_SPRING"
+    },
+    {
+      "national_id": 587,
+      "symbol": "SPECIES_EMOLGA"
+    },
+    {
+      "national_id": 588,
+      "symbol": "SPECIES_KARRABLAST"
+    },
+    {
+      "national_id": 589,
+      "symbol": "SPECIES_ESCAVALIER"
+    },
+    {
+      "national_id": 590,
+      "symbol": "SPECIES_FOONGUS"
+    },
+    {
+      "national_id": 591,
+      "symbol": "SPECIES_AMOONGUSS"
+    },
+    {
+      "national_id": 592,
+      "symbol": "SPECIES_FRILLISH"
+    },
+    {
+      "national_id": 593,
+      "symbol": "SPECIES_JELLICENT"
+    },
+    {
+      "national_id": 594,
+      "symbol": "SPECIES_ALOMOMOLA"
+    },
+    {
+      "national_id": 595,
+      "symbol": "SPECIES_JOLTIK"
+    },
+    {
+      "national_id": 596,
+      "symbol": "SPECIES_GALVANTULA"
+    },
+    {
+      "national_id": 597,
+      "symbol": "SPECIES_FERROSEED"
+    },
+    {
+      "national_id": 598,
+      "symbol": "SPECIES_FERROTHORN"
+    },
+    {
+      "national_id": 599,
+      "symbol": "SPECIES_KLINK"
+    },
+    {
+      "national_id": 600,
+      "symbol": "SPECIES_KLANG"
+    },
+    {
+      "national_id": 601,
+      "symbol": "SPECIES_KLINKLANG"
+    },
+    {
+      "national_id": 602,
+      "symbol": "SPECIES_TYNAMO"
+    },
+    {
+      "national_id": 603,
+      "symbol": "SPECIES_EELEKTRIK"
+    },
+    {
+      "national_id": 604,
+      "symbol": "SPECIES_EELEKTROSS"
+    },
+    {
+      "national_id": 605,
+      "symbol": "SPECIES_ELGYEM"
+    },
+    {
+      "national_id": 606,
+      "symbol": "SPECIES_BEHEEYEM"
+    },
+    {
+      "national_id": 607,
+      "symbol": "SPECIES_LITWICK"
+    },
+    {
+      "national_id": 608,
+      "symbol": "SPECIES_LAMPENT"
+    },
+    {
+      "national_id": 609,
+      "symbol": "SPECIES_CHANDELURE"
+    },
+    {
+      "national_id": 610,
+      "symbol": "SPECIES_AXEW"
+    },
+    {
+      "national_id": 611,
+      "symbol": "SPECIES_FRAXURE"
+    },
+    {
+      "national_id": 612,
+      "symbol": "SPECIES_HAXORUS"
+    },
+    {
+      "national_id": 613,
+      "symbol": "SPECIES_CUBCHOO"
+    },
+    {
+      "national_id": 614,
+      "symbol": "SPECIES_BEARTIC"
+    },
+    {
+      "national_id": 615,
+      "symbol": "SPECIES_CRYOGONAL"
+    },
+    {
+      "national_id": 616,
+      "symbol": "SPECIES_SHELMET"
+    },
+    {
+      "national_id": 617,
+      "symbol": "SPECIES_ACCELGOR"
+    },
+    {
+      "national_id": 618,
+      "symbol": "SPECIES_STUNFISK"
+    },
+    {
+      "national_id": 619,
+      "symbol": "SPECIES_MIENFOO"
+    },
+    {
+      "national_id": 620,
+      "symbol": "SPECIES_MIENSHAO"
+    },
+    {
+      "national_id": 621,
+      "symbol": "SPECIES_DRUDDIGON"
+    },
+    {
+      "national_id": 622,
+      "symbol": "SPECIES_GOLETT"
+    },
+    {
+      "national_id": 623,
+      "symbol": "SPECIES_GOLURK"
+    },
+    {
+      "national_id": 624,
+      "symbol": "SPECIES_PAWNIARD"
+    },
+    {
+      "national_id": 625,
+      "symbol": "SPECIES_BISHARP"
+    },
+    {
+      "national_id": 626,
+      "symbol": "SPECIES_BOUFFALANT"
+    },
+    {
+      "national_id": 627,
+      "symbol": "SPECIES_RUFFLET"
+    },
+    {
+      "national_id": 628,
+      "symbol": "SPECIES_BRAVIARY"
+    },
+    {
+      "national_id": 629,
+      "symbol": "SPECIES_VULLABY"
+    },
+    {
+      "national_id": 630,
+      "symbol": "SPECIES_MANDIBUZZ"
+    },
+    {
+      "national_id": 631,
+      "symbol": "SPECIES_HEATMOR"
+    },
+    {
+      "national_id": 632,
+      "symbol": "SPECIES_DURANT"
+    },
+    {
+      "national_id": 633,
+      "symbol": "SPECIES_DEINO"
+    },
+    {
+      "national_id": 634,
+      "symbol": "SPECIES_ZWEILOUS"
+    },
+    {
+      "national_id": 635,
+      "symbol": "SPECIES_HYDREIGON"
+    },
+    {
+      "national_id": 636,
+      "symbol": "SPECIES_LARVESTA"
+    },
+    {
+      "national_id": 637,
+      "symbol": "SPECIES_VOLCARONA"
+    },
+    {
+      "national_id": 638,
+      "symbol": "SPECIES_COBALION"
+    },
+    {
+      "national_id": 639,
+      "symbol": "SPECIES_TERRAKION"
+    },
+    {
+      "national_id": 640,
+      "symbol": "SPECIES_VIRIZION"
+    },
+    {
+      "national_id": 641,
+      "symbol": "SPECIES_TORNADUS_INCARNATE"
+    },
+    {
+      "national_id": 642,
+      "symbol": "SPECIES_THUNDURUS_INCARNATE"
+    },
+    {
+      "national_id": 643,
+      "symbol": "SPECIES_RESHIRAM"
+    },
+    {
+      "national_id": 644,
+      "symbol": "SPECIES_ZEKROM"
+    },
+    {
+      "national_id": 645,
+      "symbol": "SPECIES_LANDORUS_INCARNATE"
+    },
+    {
+      "national_id": 646,
+      "symbol": "SPECIES_KYUREM"
+    },
+    {
+      "national_id": 647,
+      "symbol": "SPECIES_KELDEO_ORDINARY"
+    },
+    {
+      "national_id": 648,
+      "symbol": "SPECIES_MELOETTA_ARIA"
+    },
+    {
+      "national_id": 649,
+      "symbol": "SPECIES_GENESECT"
+    }
+  ]
+}
