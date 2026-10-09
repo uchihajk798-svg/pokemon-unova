@@ -1,0 +1,24 @@
+{
+  "name": "GBA Pocket — Emulador Game Boy Advance",
+  "short_name": "GBA Pocket",
+  "description": "Jogue Game Boy Advance com ROMs locais e patches BPS.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10171c",
+  "theme_color": "#121a20",
+  "orientation": "any",
+  "lang": "pt-BR",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
