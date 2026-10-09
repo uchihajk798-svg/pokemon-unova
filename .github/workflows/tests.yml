@@ -26,7 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Baixar apenas o código da base, sem ROMs
-        run: git init /tmp/firered-base
+        run: |
+          git init /tmp/firered-base
           git -C /tmp/firered-base remote add origin https://github.com/Faceplantfloor/pokefirered-expansion.git
           git -C /tmp/firered-base fetch --depth=1 origin a2bb3bd82d43e636f5d78090682afdb756257bd5
           git -C /tmp/firered-base checkout --detach FETCH_HEAD
