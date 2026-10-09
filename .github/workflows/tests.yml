@@ -33,3 +33,25 @@ jobs:
         run: python3 tools/validate_unova.py --game-dir /tmp/firered-base
       - name: Mostrar relatório (sem upload de ROM)
         run: cat /tmp/unova-report.json
+
+  compilar-gba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar dependências de compilação
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends build-essential binutils-arm-none-eabi libpng-dev
+      - name: Clonar base e compilador C para GBA
+        run: |
+          git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
+          git clone --depth=1 https://github.com/pret/agbcc.git /tmp/agbcc
+          (cd /tmp/agbcc && ./build.sh && ./install.sh /tmp/firered-base)
+      - name: Substituir Pokémon por espécies de Unova
+        run: python3 tools/apply_unova.py --game-dir /tmp/firered-base
+      - name: Compilar a ROM somente no ambiente temporário
+        run: make -C /tmp/firered-base -j2
+      - name: Confirmar que existe saída GBA
+        run: test -f /tmp/firered-base/pokefirered.gba
+      # NÃO use upload-artifact aqui; jamais publicar ROM comercial.
