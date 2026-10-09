@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from apply_unova import (  # noqa: E402
     LAB_FILE, TRAINERS_FILE, WILD_FILE, apply,
-    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild
+    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild, patch_static_scripts
 )
 
 
@@ -92,6 +92,27 @@ class UnovaTests(unittest.TestCase):
         self.assertIn("ROGGENROLA\nLevel: 12", result)
         self.assertIn("DWEBBLE\nLevel: 14", result)
         self.assertEqual(patch_trainers(result, self.available, self.mapping)[0], result)
+
+
+    def test_static_legendary_and_gift_references(self):
+        with tempfile.TemporaryDirectory() as td:
+            game_dir = Path(td)
+            event = game_dir / "data/maps/PowerPlant/scripts.inc"
+            event.parent.mkdir(parents=True, exist_ok=True)
+            event.write_text("givepokemon SPECIES_EEVEE, 25\n"
+                             "setwildbattle SPECIES_ZAPDOS, 50, 0\n"
+                             "setvar VAR_TEMP_1, SPECIES_NONE\n", encoding="utf-8")
+            preview = patch_static_scripts(game_dir, self.available, self.mapping, True)
+            self.assertEqual(preview["changed_occurrences"], 2)
+            self.assertIn("SPECIES_EEVEE", event.read_text())
+            report = patch_static_scripts(game_dir, self.available, self.mapping, False)
+            self.assertEqual(report["changed_files"], 1)
+            after = event.read_text()
+            self.assertIn("SPECIES_DEERLING_SPRING", after)
+            self.assertIn("SPECIES_THUNDURUS_INCARNATE", after)
+            self.assertIn("SPECIES_NONE", after)
+            self.assertTrue(event.with_name(event.name + ".unova-backup").exists())
+            self.assertEqual(patch_static_scripts(game_dir, self.available, self.mapping, False)["changed_files"], 0)
 
     def test_apply_backup_and_idempotency(self):
         with tempfile.TemporaryDirectory() as td:
