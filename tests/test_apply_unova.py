@@ -7,8 +7,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from apply_unova import (  # noqa: E402
-    LAB_FILE, TRAINERS_FILE, WILD_FILE, apply,
-    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild, patch_static_scripts, patch_trade_evolutions
+    LAB_FILE, LAB_TEXT_FILE, TRAINERS_FILE, WILD_FILE, apply,
+    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild, patch_lab_text, patch_static_scripts, patch_trade_evolutions
 )
 
 
@@ -22,6 +22,13 @@ class UnovaTests(unittest.TestCase):
         self.assertEqual(self.available["SNIVY"], "SNIVY")
         self.assertIn("GENESECT", self.available)
         self.assertIn("DARMANITANSTANDARD", self.available)
+
+    def test_lab_dialogue_text(self):
+        raw = 'BULBASAUR CHARMANDER SQUIRTLE'
+        result, changed, fallback = patch_lab_text(raw)
+        self.assertEqual(result, 'SNIVY TEPIG OSHAWOTT')
+        self.assertEqual(sum(changed.values()), 3)
+        self.assertEqual(fallback, 0)
 
     def test_starter_event_and_rival(self):
         lab = (
@@ -138,6 +145,7 @@ class UnovaTests(unittest.TestCase):
                  "setvar RIVAL_STARTER_SPECIES, SPECIES_BULBASAUR\n" +
                  "setvar PLAYER_STARTER_SPECIES, SPECIES_CHARMANDER\n" +
                  "setvar RIVAL_STARTER_SPECIES, SPECIES_SQUIRTLE\n"),
+                (LAB_TEXT_FILE, "BULBASAUR CHARMANDER SQUIRTLE"),
                 (WILD_FILE, json.dumps({"wild_encounter_groups": [{
                     "label": "x", "encounters": [{"map": "MAP_ROUTE1", "land_mons": {
                         "encounter_rate": 20, "mons": [
@@ -153,11 +161,11 @@ class UnovaTests(unittest.TestCase):
             self.assertTrue(dry["dry_run"])
             self.assertIn("SPECIES_BULBASAUR", (d / LAB_FILE).read_text())
             result = apply(d)
-            self.assertEqual(len(result["results"]), 3)
-            for relative in (LAB_FILE, WILD_FILE, TRAINERS_FILE):
+            self.assertEqual(len(result["results"]), 4)
+            for relative in (LAB_FILE, LAB_TEXT_FILE, WILD_FILE, TRAINERS_FILE):
                 path = d / relative
                 self.assertTrue(path.with_name(path.name + ".unova-backup").exists())
-            snapshot = [(d / p).read_text() for p in (LAB_FILE, WILD_FILE, TRAINERS_FILE)]
+            snapshot = [(d / p).read_text() for p in (LAB_FILE, LAB_TEXT_FILE, WILD_FILE, TRAINERS_FILE)]
             apply(d)
             self.assertEqual(snapshot, [(d / p).read_text()
                                         for p in (LAB_FILE, WILD_FILE, TRAINERS_FILE)])
