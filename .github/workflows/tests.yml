@@ -26,7 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Baixar apenas o código da base, sem ROMs
-        run: git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
+        run: git init /tmp/firered-base
+          git -C /tmp/firered-base remote add origin https://github.com/Faceplantfloor/pokefirered-expansion.git
+          git -C /tmp/firered-base fetch --depth=1 origin a2bb3bd82d43e636f5d78090682afdb756257bd5
+          git -C /tmp/firered-base checkout --detach FETCH_HEAD
       - name: Aplicar modificações de Unova
         run: python3 tools/apply_unova.py --game-dir /tmp/firered-base --report /tmp/unova-report.json
       - name: Conferir referências de espécies
@@ -45,7 +48,10 @@ jobs:
           sudo apt-get install -y --no-install-recommends build-essential binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev
       - name: Clonar base e compilador C para GBA
         run: |
-          git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
+          git init /tmp/firered-base
+          git -C /tmp/firered-base remote add origin https://github.com/Faceplantfloor/pokefirered-expansion.git
+          git -C /tmp/firered-base fetch --depth=1 origin a2bb3bd82d43e636f5d78090682afdb756257bd5
+          git -C /tmp/firered-base checkout --detach FETCH_HEAD
           git clone --depth=1 https://github.com/pret/agbcc.git /tmp/agbcc
           (cd /tmp/agbcc && ./build.sh && ./install.sh /tmp/firered-base)
       - name: Compilar referência original localmente (não publicar)
