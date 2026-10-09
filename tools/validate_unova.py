@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 from apply_unova import LAB_FILE, TRAINERS_FILE, WILD_FILE, MON_PATTERN, get_catalog, normalized
+from complete_encounters import is_firered
 
 
 def validate(game_dir):
@@ -26,6 +27,8 @@ def validate(game_dir):
     seen_wild = set()
     for group in groups:
         for event in group["encounters"]:
+            if not is_firered(event):
+                continue
             for field, value in event.items():
                 if field.endswith("_mons") and isinstance(value, dict):
                     for mon in value.get("mons", []):
@@ -47,6 +50,10 @@ def validate(game_dir):
             errors.append(f"Treinador com Pokémon fora de Unova: {name}")
         else:
             seen_trainers.add(key)
+    missing_wild = sorted(set(catalog) - seen_wild)
+    if missing_wild:
+        errors.append(f"Faltam espécies selvagens em FireRed: {len(missing_wild)}; "
+                      + ", ".join(missing_wild[:20]))
     if not counts["encounter_slots"] or not counts["trainer_party_entries"]:
         errors.append("Dados de encontros ou equipes estão vazios")
 
@@ -57,6 +64,7 @@ def validate(game_dir):
         "encounter_slots": counts["encounter_slots"],
         "trainer_party_entries": counts["trainer_party_entries"],
         "unique_species_in_wild": len(seen_wild),
+        "missing_species_wild": missing_wild,
         "unique_species_in_trainers": len(seen_trainers),
         "unique_species_overall": len(seen_wild | seen_trainers),
         "catalog_size": len(catalog),
