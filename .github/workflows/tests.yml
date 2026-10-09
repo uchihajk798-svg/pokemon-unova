@@ -3,7 +3,17 @@ name: Construir patch Pokémon Unova
 on:
   push:
     branches: [main]
+    paths:
+      - "tools/**"
+      - "data/**"
+      - "tests/*.py"
+      - ".github/workflows/tests.yml"
   pull_request:
+    paths:
+      - "tools/**"
+      - "data/**"
+      - "tests/*.py"
+      - ".github/workflows/tests.yml"
   workflow_dispatch:
 
 concurrency:
