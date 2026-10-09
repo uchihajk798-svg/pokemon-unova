@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#121a20">
+  <meta name="description" content="Emulador de Game Boy Advance no navegador. Abra suas ROMs GBA locais, aplique patches BPS e jogue no celular ou computador.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <title>GBA Pocket — emulador gratuito</title>
+  <style>
+    :root{color-scheme:dark;--bg:#10171c;--surface:#1a252b;--surface2:#233039;--stroke:#35474e;--text:#ecf4f1;--muted:#aabebf;--mint:#b6f071;--yellow:#eecb7b;--danger:#ffad9f;--shadow:0 24px 70px #06101580}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse 900px 500px at 80% -160px,#25453c 2%,transparent 75%),var(--bg);color:var(--text);min-height:100dvh}
+    button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}a{color:var(--mint)}
+    .wrap{max-width:1120px;margin:auto;padding:0 22px}
+    header{border-bottom:1px solid #3141497a}.header{min-height:77px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:17px;letter-spacing:.4px}.brand img{height:38px;width:38px;border-radius:12px}.brand span{color:var(--mint)}
+    .nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--muted);font-size:13px}.nav a:hover{color:white}
+    .hero{padding:64px 0 32px;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
+    .eyebrow{color:var(--mint);letter-spacing:3px;text-transform:uppercase;font-size:11px;font-weight:900}.hero h1{font-weight:900;letter-spacing:-2.7px;line-height:1.03;font-size:clamp(38px,6vw,68px);margin:13px 0}
+    .hero h1 em{font-style:normal;color:var(--mint)}.hero p{font-size:16px;color:var(--muted);max-width:570px;line-height:1.7}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{display:inline-flex;gap:7px;align-items:center;border:1px solid var(--stroke);color:#c9dbd7;border-radius:99px;font-size:12px;padding:8px 11px}
+    .console{background:linear-gradient(140deg,#2a3c44,#152026);padding:24px;border-radius:36px 36px 55px 36px;border:1px solid #50666c;box-shadow:var(--shadow);transform:rotate(3deg);max-width:360px;margin:auto;width:100%}
+    .console .glass{background:#061010;border:10px solid #0c1518;border-radius:16px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 30px #072921}
+    .pixel{font-family:ui-monospace,monospace;font-weight:900;font-size:clamp(30px,4vw,46px);color:var(--mint);text-shadow:4px 4px #4b7458;letter-spacing:-3px}.console-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:23px}
+    .dpad{width:76px;height:76px;background:linear-gradient(#10191d,#070d10);clip-path:polygon(32% 0,68% 0,68% 32%,100% 32%,100% 68%,68% 68%,68% 100%,32% 100%,32% 68%,0 68%,0 32%,32% 32%);opacity:.95}
+    .ab{display:flex;gap:14px;transform:rotate(-25deg)}.ab i{border-radius:100%;height:42px;width:42px;background:#d67b79;box-shadow:inset -5px -5px 0 #a35457}
+    main{padding-bottom:80px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,.9fr);gap:20px}.panel{background:var(--surface);border:1px solid var(--stroke);border-radius:22px;padding:24px;box-shadow:0 14px 35px #07111540}.panel h2{font-size:20px;margin:0 0 8px;letter-spacing:-.4px}.description{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 16px}
+    .sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}.sectionhead span{font-size:11px;color:var(--mint);text-transform:uppercase;letter-spacing:1px}
+    label.fieldlabel{display:block;font-size:13px;font-weight:700;color:#d5e2df;margin:17px 0 7px}
+    .filebox{display:block;background:#101b20;border:1.5px dashed #5a726f;border-radius:15px;padding:21px;transition:border-color .2s;cursor:pointer}
+    .filebox:hover,.filebox:focus-within{border-color:var(--mint)}.filebox strong{display:block;font-size:14px}.filebox small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .filebox input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .buttonrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:1px solid transparent;border-radius:12px;padding:12px 17px;font-weight:800;min-height:46px;background:var(--mint);color:#162215;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+    .btn.secondary{background:var(--surface2);border-color:var(--stroke);color:#dce9e6}.btn.ghost{background:transparent;border:1px solid var(--stroke);color:var(--muted)}.btn.small{font-size:12px;padding:7px 11px;min-height:35px}
+    .note{font-size:12px;color:var(--muted);line-height:1.6;margin:13px 0 0}.check{display:flex;gap:10px;align-items:start;color:var(--muted);font-size:13px;margin-top:18px}.check input{accent-color:var(--mint);margin-top:4px}
+    .status{min-height:43px;border:1px solid #3d5e51;background:#19342d;color:#daf3dc;padding:12px;border-radius:11px;font-size:12px;margin-top:18px;white-space:pre-wrap}
+    .status.error{background:#352522;border-color:#72534c;color:#ffd3c9}
+    #library{display:grid;gap:10px}.game-row{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #395056;border-radius:13px;background:#162127}
+    .game-thumb{width:39px;height:44px;border:1px solid #536970;background:#293b40;border-radius:8px;display:grid;place-items:center;color:var(--mint);font:bold 12px monospace;flex:none}
+    .game-meta{min-width:0;flex:1}.game-meta strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.game-meta small{color:var(--muted);font-size:11px}
+    .row-actions{display:flex;gap:6px}.empty{font-size:13px;color:var(--muted);border:1px dashed var(--stroke);padding:27px 14px;text-align:center;border-radius:13px}
+    .playerbox{margin-top:22px;display:none}.playerbox.show{display:block}.player-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .player-title strong{font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .emulator-frame{display:block;border:0;width:100%;height:min(75vh,690px);min-height:400px;background:#030b0c;border-radius:14px}
+    .footer{border-top:1px solid var(--stroke);padding:27px 22px 45px;color:var(--muted);font-size:12px;line-height:1.7}
+    @media(max-width:790px){.hero{grid-template-columns:1fr;padding-top:37px}.console{display:none}.layout{grid-template-columns:1fr}.panel{padding:19px}}
+    @media(max-width:560px){.wrap{padding-left:14px;padding-right:14px}.nav a:first-child{display:none}.hero h1{letter-spacing:-1.6px}.player-title{align-items:flex-start;flex-direction:column}.emulator-frame{height:70dvh;min-height:380px}.buttonrow .btn{flex:1}}
+  </style>
+</head>
+<body>
+<header><div class="wrap header">
+  <div class="brand"><img src="./icon.svg" alt=""><div>GBA <span>POCKET</span></div></div>
+  <nav class="nav"><a href="../">Pokémon Unova</a><a href="https://github.com/uchihajk798-svg/pokemon-unova">Código aberto</a><button id="install" class="btn secondary small" hidden>Instalar app</button></nav>
+</div></header>
+<main class="wrap">
+  <section class="hero" aria-label="Boas-vindas">
+    <div><span class="eyebrow">SEU GAME BOY ADVANCE EM QUALQUER LUGAR</span><h1>O clássico na<br><em>palma da mão.</em></h1>
+      <p>Abra seus jogos de GBA direto no navegador. Funciona em celular, computador e Chromebook, com controles de toque, opções de save no emulador e sem precisar de conta.</p>
+      <div class="pill-row"><span class="pill">🎮 Emulação GBA</span><span class="pill">📱 Controles touch</span><span class="pill">💾 Biblioteca local</span><span class="pill">🛠️ Patch BPS</span></div>
+    </div>
+    <div class="console" aria-hidden="true"><div class="glass"><span class="pixel">GBA<br>POCKET</span></div><div class="console-bottom"><span class="dpad"></span><span class="ab"><i></i><i></i></span></div></div>
+  </section>
+  <div class="layout">
+    <section class="panel">
+      <div class="sectionhead"><h2>Abrir jogo</h2><span>01 • CARREGAR</span></div>
+      <p class="description">Selecione um jogo <strong>.gba</strong> do seu aparelho. Se estiver usando Pokémon Unova, você pode aplicar um patch <strong>.bps</strong> na ROM base correspondente.</p>
+      <label class="fieldlabel" for="rom">Arquivo do jogo (.gba)</label>
+      <label class="filebox" for="rom"><strong id="romlabel">Selecionar ROM GBA</strong><small>Até 64 MB · Seu arquivo é processado neste dispositivo</small><input id="rom" type="file" accept=".gba,application/octet-stream"></label>
+      <label class="fieldlabel" for="patch">Patch opcional (.bps)</label>
+      <label class="filebox" for="patch"><strong id="patchlabel">Selecionar patch BPS</strong><small>Deixe vazio para abrir um GBA sem modificações</small><input id="patch" type="file" accept=".bps"></label>
+      <label class="check"><input type="checkbox" id="remember" checked><span>Guardar uma cópia do jogo na biblioteca deste navegador (pode ser apagada nos ajustes do navegador)</span></label>
+      <div class="buttonrow"><button class="btn" id="play">▶ Jogar GBA</button><button class="btn secondary" id="clear">Limpar seleção</button></div>
+      <p class="note">Para o Pokémon Unova, use o BPS com a versão exata de FireRed indicada no pacote do patch. O app não fornece ROMs ou BIOS.</p>
+      <div class="status" id="status" role="status" aria-live="polite">Escolha um arquivo .gba para começar.</div>
+    </section>
+    <aside class="panel">
+      <div class="sectionhead"><h2>Minha biblioteca</h2><span>02 • LOCAL</span></div>
+      <p class="description">Os jogos que você escolher guardar ficam apenas no armazenamento do seu navegador. Não há nuvem ou cadastro.</p>
+      <div id="library"><div class="empty">Nenhum jogo salvo neste dispositivo.</div></div>
+      <div class="buttonrow"><button class="btn ghost small" id="reload">Atualizar biblioteca</button></div>
+      <hr style="border:0;border-top:1px solid var(--stroke);margin:23px 0">
+      <h2 style="font-size:16px">Como usar os controles?</h2>
+      <p class="description">No celular, o próprio emulador mostra os botões virtuais. No computador, configure teclado ou controle pelo menu do emulador. Use o menu interno para salvar ou carregar estados e arquivos SAV.</p>
+      <h2 style="font-size:16px">Instalar no celular</h2>
+      <p class="description">No Android, use “Instalar app” quando disponível ou o menu do Chrome. No iPhone, Safari → Compartilhar → Adicionar à Tela de Início. A interface pode abrir como app; o núcleo do emulador ainda pode precisar de internet.</p>
+    </aside>
+  </div>
+  <section id="playerbox" class="panel playerbox" aria-label="Área do emulador">
+    <div class="player-title"><strong id="playing">Jogo</strong><div class="player-actions"><button class="btn secondary small" id="fullscreen">⛶ Tela cheia</button><button class="btn ghost small" id="exit">Fechar jogo</button></div></div>
+    <iframe title="Emulador Game Boy Advance" id="emulator" class="emulator-frame" allow="fullscreen; gamepad" allowfullscreen referrerpolicy="no-referrer"></iframe>
+    <p class="note">Salvamentos e save states são gerenciados pelo menu do emulador. Antes de fechar, salve seu progresso e faça backup dos arquivos SAV quando necessário.</p>
+  </section>
+</main>
+<footer class="wrap footer">GBA Pocket é um utilitário independente e gratuito. O emulador utiliza <a href="https://emulatorjs.org/">EmulatorJS</a>. A biblioteca do app não disponibiliza jogos protegidos por direitos autorais nem transfere os arquivos escolhidos ao nosso servidor. <a href="../">Voltar ao Pokémon Unova</a>.</footer>
+<script type="module" src="./main.mjs"></script>
+</body>
+</html>
