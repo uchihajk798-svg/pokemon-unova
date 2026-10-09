@@ -1,0 +1,35 @@
+name: Verificar Unova (sem ROM)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Testes unitários
+        run: python3 -m unittest discover -s tests -v
+      - name: Conferir catálogo
+        run: python3 -c 'from pathlib import Path; import json; x=json.loads(Path("data/unova_species.json").read_text())["species"]; assert [s["national_id"] for s in x] == list(range(494, 650))'
+
+  smoke-base:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar apenas o código da base, sem ROMs
+        run: git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
+      - name: Aplicar modificações de Unova
+        run: python3 tools/apply_unova.py --game-dir /tmp/firered-base --report /tmp/unova-report.json
+      - name: Conferir referências de espécies
+        run: python3 tools/validate_unova.py --game-dir /tmp/firered-base
+      - name: Mostrar relatório (sem upload de ROM)
+        run: cat /tmp/unova-report.json
