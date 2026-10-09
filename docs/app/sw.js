@@ -1,10 +1,10 @@
 /* Apenas o shell do app é pré-carregado.
  * O núcleo remoto de emulação ainda pode exigir conexão à internet.
  */
-const CACHE = "gba-pocket-shell-v1";
+const CACHE = "gba-pocket-shell-v2";
 const URLS = [
   "./", "./index.html", "./player.html", "./main.mjs",
-  "./patch.mjs", "./manifest.webmanifest", "./icon.svg"
+  "./patch.mjs", "./manifest.webmanifest", "./icon.svg", "./icon-192.png", "./icon-512.png"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(URLS)).then(() => self.skipWaiting()));
