@@ -385,6 +385,48 @@ def patch_static_scripts(game_dir, available, mapping, dry_run):
             "notice": "Apenas referências explícitas em scripts; scripts ainda precisam de revisão manual."}
 
 
+
+EVOLUTIONS_FILE = "src/data/pokemon/species_info/gen_5_families.h"
+
+
+def patch_trade_evolutions(text):
+    """Mantém a troca original e adiciona evolução por Linking Cord."""
+    rules = (
+        (
+            "{EVO_TRADE, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})}),",
+            "{EVO_TRADE, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})},\n"
+            "                                {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_ESCAVALIER}),",
+        ),
+        (
+            "{EVO_TRADE, 0, SPECIES_ACCELGOR, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})}),",
+            "{EVO_TRADE, 0, SPECIES_ACCELGOR, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})},\n"
+            "                                {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_ACCELGOR}),",
+        ),
+    )
+    changed = 0
+    for before, after in rules:
+        if before in text:
+            text = text.replace(before, after)
+            changed += 1
+        elif after not in text:
+            raise ValueError("Formato de evolução por troca não reconhecido na base")
+    return text, changed
+
+
+def apply_trade_evolutions(game_dir, dry_run):
+    path = game_dir / EVOLUTIONS_FILE
+    if not path.exists():
+        return {"status": "not_available", "modified": 0}
+    original = path.read_text(encoding="utf-8")
+    updated, changed = patch_trade_evolutions(original)
+    if not dry_run and updated != original:
+        backup = path.with_name(path.name + ".unova-backup")
+        if not backup.exists():
+            shutil.copy2(path, backup)
+        path.write_text(updated, encoding="utf-8")
+    return {"status": "updated" if changed else "already_updated", "modified": changed}
+
+
 def apply(game_dir, dry_run=False):
     available = get_catalog()
     mapping = get_replacements(available)
@@ -413,8 +455,10 @@ def apply(game_dir, dry_run=False):
                 shutil.copy2(path, backup)
             path.write_text(patched, encoding="utf-8")
     static = patch_static_scripts(game_dir, available, mapping, dry_run)
+    evolutions = apply_trade_evolutions(game_dir, dry_run)
     return {"dry_run": dry_run, "base": str(game_dir), "results": results,
             "static_events": static,
+            "trade_evolutions": evolutions,
             "notice": "Passagem inicial apenas; sem garantia de build, sprites, movesets ou campanha completa."}
 
 
