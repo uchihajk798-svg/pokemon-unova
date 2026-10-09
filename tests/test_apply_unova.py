@@ -168,7 +168,7 @@ class UnovaTests(unittest.TestCase):
             snapshot = [(d / p).read_text() for p in (LAB_FILE, LAB_TEXT_FILE, WILD_FILE, TRAINERS_FILE)]
             apply(d)
             self.assertEqual(snapshot, [(d / p).read_text()
-                                        for p in (LAB_FILE, WILD_FILE, TRAINERS_FILE)])
+                                        for p in (LAB_FILE, LAB_TEXT_FILE, WILD_FILE, TRAINERS_FILE)])
 
 
 if __name__ == "__main__":
