@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { inflateSync } from "node:zlib";
 import { crc32, applyBps } from "../docs/app/patch.mjs";
 
 function variable(number) {
@@ -81,4 +82,30 @@ test("PWA contém os arquivos e configurações para GBA", () => {
   assert.match(html, /manifest\.webmanifest/);
   assert.match(player, /EJS_core="gba"/);
   assert.match(player, /cdn\.emulatorjs\.org/);
+});
+
+test("ícones PNG são válidos, com CRC correto e resolução de PWA", () => {
+  for (const size of [192, 512]) {
+    const image = readFileSync("docs/app/icon-" + size + ".png");
+    assert.deepEqual([...image.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+    let pos = 8;
+    const idat = [];
+    while (pos < image.length) {
+      const length = image.readUInt32BE(pos); pos += 4;
+      const kind = image.toString("ascii", pos, pos + 4);
+      const typed = image.subarray(pos, pos + 4); pos += 4;
+      const data = image.subarray(pos, pos + length); pos += length;
+      const expected = image.readUInt32BE(pos); pos += 4;
+      assert.equal(crc32(Buffer.concat([typed, data])), expected, "CRC PNG de " + kind);
+      if (kind === "IHDR") {
+        assert.equal(data.readUInt32BE(0), size);
+        assert.equal(data.readUInt32BE(4), size);
+        assert.equal(data[9], 3); // imagem de paleta indexada
+      }
+      if (kind === "IDAT") idat.push(data);
+      if (kind === "IEND") break;
+    }
+    const pixels = inflateSync(Buffer.concat(idat));
+    assert.equal(pixels.length, size * (size + 1));
+  }
 });
