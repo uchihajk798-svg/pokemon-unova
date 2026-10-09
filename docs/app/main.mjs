@@ -3,7 +3,7 @@ import { applyBps } from "./patch.mjs";
 const $ = id => document.getElementById(id);
 const elements = {
   rom: $("rom"), patch: $("patch"), status: $("status"),
-  play: $("play"), clear: $("clear"), library: $("library"),
+  play: $("play"), download: $("download-game"), clear: $("clear"), library: $("library"),
   reload: $("reload"), remember: $("remember"), install: $("install"),
   playerbox: $("playerbox"), iframe: $("emulator"), playing: $("playing"),
   fullscreen: $("fullscreen"), exit: $("exit")
@@ -13,6 +13,7 @@ const MAX_PATCH = 64 * 1024 * 1024;
 const dbName = "gba-pocket-local-v1";
 let dbPromise = null, inProgress = false, deferredInstall = null;
 let pendingGame = null;
+let generatedGame = null;
 let playing = false;
 
 function notify(message, error = false) {
@@ -100,6 +101,7 @@ function setBusy(busy) {
   elements.play.disabled = busy;
   elements.clear.disabled = busy;
   elements.reload.disabled = busy;
+  elements.download.disabled = busy || !generatedGame;
 }
 function loadFrame(title, id, bytes) {
   if (playing && !confirm("Fechar o jogo atual? Salve o progresso no emulador antes de trocar de jogo.")) {
@@ -219,6 +221,8 @@ async function startFromFiles() {
         message = "O jogo abriu, mas não foi possível guardá-lo na biblioteca: " + (err.message || err);
       }
     }
+    generatedGame = { filename: safeFileName(displayName(rom) + (patch ? "-unova" : "")) + ".gba", blob: new Blob([game], { type: "application/octet-stream" }) };
+    elements.download.disabled = false;
     loadFrame(gameInfo.title, gameInfo.id, game);
     if (message) notify(message, true);
   } catch (err) {
@@ -228,10 +232,24 @@ async function startFromFiles() {
   }
 }
 elements.play.addEventListener("click", startFromFiles);
+elements.download.addEventListener("click", () => {
+  if (!generatedGame) return;
+  const url = URL.createObjectURL(generatedGame.blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = generatedGame.filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 15000);
+  notify("Download iniciado: " + generatedGame.filename + ". Guarde esse .gba no aparelho.");
+});
 elements.reload.addEventListener("click", refreshLibrary);
 elements.clear.addEventListener("click", () => {
   elements.rom.value = "";
   elements.patch.value = "";
+  generatedGame = null;
+  elements.download.disabled = true;
   $("romlabel").textContent = "Selecionar ROM GBA";
   $("patchlabel").textContent = "Selecionar patch BPS";
   notify("Seleção limpa. Escolha um arquivo .gba.");
