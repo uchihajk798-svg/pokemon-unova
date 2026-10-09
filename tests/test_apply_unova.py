@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from apply_unova import (  # noqa: E402
     LAB_FILE, TRAINERS_FILE, WILD_FILE, apply,
-    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild, patch_static_scripts
+    get_catalog, get_replacements, patch_lab, patch_trainers, patch_wild, patch_static_scripts, patch_trade_evolutions
 )
 
 
@@ -93,6 +93,20 @@ class UnovaTests(unittest.TestCase):
         self.assertIn("DWEBBLE\nLevel: 14", result)
         self.assertEqual(patch_trainers(result, self.available, self.mapping)[0], result)
 
+
+
+    def test_linking_cord_for_trade_partner_evolutions(self):
+        raw = (
+            ".evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ESCAVALIER, "
+            "CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})}),\n"
+            ".evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ACCELGOR, "
+            "CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})}),\n"
+        )
+        patched, changed = patch_trade_evolutions(raw)
+        self.assertEqual(changed, 2)
+        self.assertIn("ITEM_LINKING_CORD, SPECIES_ESCAVALIER", patched)
+        self.assertIn("ITEM_LINKING_CORD, SPECIES_ACCELGOR", patched)
+        self.assertEqual(patch_trade_evolutions(patched), (patched, 0))
 
     def test_static_legendary_and_gift_references(self):
         with tempfile.TemporaryDirectory() as td:
