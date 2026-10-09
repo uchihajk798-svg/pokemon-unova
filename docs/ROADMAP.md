@@ -10,11 +10,12 @@ Este documento separa **código implementado** de **recursos jogáveis comprovad
 - [x] Primeira substituição das espécies dos treinadores (com equivalências provisórias).
 - [x] Testes unitários e validação de espécies com GitHub Actions.
 - [ ] Revisão artesanal de habitat, taxa, faixa de nível e balanceamento de cada rota.
-- [ ] Garantir a acessibilidade de todas as 156 espécies (incluindo lendários).
+- [x] Inserir referências das 156 espécies em slots selvagens de FireRed (validação automática aprovada).
+- [ ] Confirmar acessibilidade real das 156 espécies, incluindo lendários, durante o jogo e balancear raridade.
 - [ ] Ajustar TMs/HMs e movimentos customizados dos treinadores.
 
 ## Etapa 2 — Dados do jogo
-- [ ] Compilação comprovada do código modificado para GBA.
+- [x] Compilação comprovada do código modificado para GBA via GitHub Actions.
 - [ ] Inserção e verificação de todos os sprites, ícones, paletas e cries.
 - [ ] Pokédex regional de 156 registros funcionais.
 - [ ] Evoluções por troca adaptadas para jogar sozinho.
@@ -32,16 +33,22 @@ Este documento separa **código implementado** de **recursos jogáveis comprovad
 - [ ] Conferir que nenhuma rota depende de espécie removida.
 
 ## Etapa 4 — Distribuição
-- [ ] Patch BPS/UPS gerado e validado contra base correta.
-- [ ] Tela opcional para aplicar patch a ROM legítima localmente.
-- [ ] Emulador no navegador sem publicar ROM comercial.
+- [x] Patch BPS gerado, checksum validado e oferecido como artefato temporário em GitHub Actions.
+- [x] Tela web local de aplicação do BPS, com confirmação de integridade; teste visual de navegador pendente.
+- [x] Integração inicial do EmulatorJS no HTML sem ROM comercial; teste manual pendente.
 - [ ] Pacote de documentação, licenças, créditos e instruções.
 
 ## Verificações realizadas
 - Catálogo: 156 / 156 espécies cadastradas em JSON.
 - Primeira integração de dados na base: 4.352 slots de encontros e 1.758 entradas de equipes processadas.
 - Verificação de espécies nas duas tabelas: zero referências inválidas detectadas.
-- Espécies únicas nestas duas tabelas juntas: 114; ainda não é a promessa de disponibilidade das 156.
+- Espécies únicas nos encontros FireRed após distribuição de cobertura: 156/156 (validador automático; não garante que todas as áreas estejam acessíveis).
 - O programa de validação **não** comprova equilíbrio, recompensas, compatibilidade de golpes, teste de ROM nem campanha jogável.
 
 **Atenção:** não confunda percentual de ferramentas concluídas com progresso do jogo como um todo. Ainda não existe build final jogável verificada.
+
+## Estado técnico em 2026-10-09
+- 12 testes unitários automatizados passaram após ajustes (não incluem gameplay em emulador).
+- O script de cobertura verifica 156/156 espécies no conjunto de encontros FireRed.
+- Primeiras edições de diálogos do laboratório e alternativas via Linking Cord para evolução por troca.
+- Testes integrados da campanha do início ao fim e validação do launcher web continuam pendentes.
