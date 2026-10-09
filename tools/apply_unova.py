@@ -343,6 +343,48 @@ def patch_trainers(text, available, mapping):
     return "".join(output), dict(changed), fallback
 
 
+
+# Trocas conservadoras nos eventos estáticos (presentes, encontros roteirizados).
+# Só converte símbolos que tenham correspondência explícita na tabela acima.
+STATIC_PATTERN = re.compile(r"\bSPECIES_[A-Z0-9_]+\b")
+
+
+def patch_static_scripts(game_dir, available, mapping, dry_run):
+    changed_files = 0
+    replacements = Counter()
+    for directory in (game_dir / "data" / "maps", game_dir / "data" / "scripts"):
+        if not directory.is_dir():
+            continue
+        for path in sorted(directory.rglob("*.inc")):
+            if path.relative_to(game_dir).as_posix() == LAB_FILE:
+                continue
+            original = path.read_text(encoding="utf-8")
+            if "SPECIES_" not in original:
+                continue
+
+            def convert(match):
+                symbol = match.group(0)
+                key = normalized(symbol.removeprefix("SPECIES_"))
+                if key in available or key not in mapping:
+                    return symbol
+                new = "SPECIES_" + available[normalized(mapping[key])]
+                if new != symbol:
+                    replacements[symbol] += 1
+                return new
+
+            rewritten = STATIC_PATTERN.sub(convert, original)
+            if original != rewritten:
+                changed_files += 1
+                if not dry_run:
+                    backup = path.with_name(path.name + ".unova-backup")
+                    if not backup.exists():
+                        shutil.copy2(path, backup)
+                    path.write_text(rewritten, encoding="utf-8")
+    return {"changed_files": changed_files,
+            "changed_occurrences": sum(replacements.values()),
+            "notice": "Apenas referências explícitas em scripts; scripts ainda precisam de revisão manual."}
+
+
 def apply(game_dir, dry_run=False):
     available = get_catalog()
     mapping = get_replacements(available)
@@ -370,7 +412,9 @@ def apply(game_dir, dry_run=False):
             if not backup.exists():
                 shutil.copy2(path, backup)
             path.write_text(patched, encoding="utf-8")
+    static = patch_static_scripts(game_dir, available, mapping, dry_run)
     return {"dry_run": dry_run, "base": str(game_dir), "results": results,
+            "static_events": static,
             "notice": "Passagem inicial apenas; sem garantia de build, sprites, movesets ou campanha completa."}
 
 
