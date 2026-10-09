@@ -348,6 +348,7 @@ def patch_trainers(text, available, mapping):
         trainer = found.group("name")
         leader_party = GYM_PARTIES.get(trainer)
         index = 0
+        renamed_indices = []
 
         def replace_mon(match):
             nonlocal index, fallback
@@ -359,11 +360,26 @@ def patch_trainers(text, available, mapping):
                 new, guessed = choose(name, context, available, mapping)
             index += 1
             fallback += int(guessed)
-            if normalized(name) != normalized(new):
+            renamed = normalized(name) != normalized(new)
+            renamed_indices.append(renamed)
+            if renamed:
                 changed[name] += 1
             return new + "\n"
 
-        output.append(MON_PATTERN.sub(replace_mon, part))
+        part = MON_PATTERN.sub(replace_mon, part)
+        # Movimentos fixos do FireRed geralmente não são aprendíveis pela
+        # espécie substituta. Sem movimentos listados, o jogo gera moveset por
+        # nível pela espécie atual (mantendo batalha funcional/consistente).
+        found = list(MON_PATTERN.finditer(part))
+        for j in range(len(found) - 1, -1, -1):
+            if not renamed_indices[j]:
+                continue
+            start = found[j].end()
+            end = found[j + 1].start() if j + 1 < len(found) else len(part)
+            segment = part[start:end]
+            segment = re.sub(r"(?m)^-[ ]+[^\\r\\n]+\\r?\\n", "", segment)
+            part = part[:start] + segment + part[end:]
+        output.append(part)
     return "".join(output), dict(changed), fallback
 
 
