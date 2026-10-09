@@ -102,6 +102,19 @@ class UnovaTests(unittest.TestCase):
 
 
 
+    def test_trainers_do_not_keep_illegal_original_moves(self):
+        raw = (
+            "=== TRAINER_LEADER_BROCK ===\\nName: BROCK\\nClass: Leader\\n\\n"
+            "Geodude\\nLevel: 12\\nIVs: 0 HP\\n- Tackle\\n- Defense Curl\\n\\n"
+            "Onix\\nLevel: 14\\nIVs: 0 HP\\n- Bind\\n- Rock Tomb\\n"
+        ).replace("\\\\n", "\\n")
+        result, changes, _ = patch_trainers(raw, self.available, self.mapping)
+        self.assertIn("ROGGENROLA", result)
+        self.assertIn("DWEBBLE", result)
+        self.assertNotIn("- Tackle", result)
+        self.assertNotIn("- Bind", result)
+        self.assertIn("Level: 14", result)
+
     def test_linking_cord_for_trade_partner_evolutions(self):
         raw = (
             ".evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ESCAVALIER, "
