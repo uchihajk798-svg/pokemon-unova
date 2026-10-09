@@ -69,7 +69,7 @@ def guarantee_full_coverage(wild):
     for item in sorted(missing, key=lambda p: (not p["special"], -p["stage"], p["national_id"])):
         symbol = item["symbol"]
         eligible = []
-        for candidate in candidates:
+        for serial, candidate in enumerate(candidates):
             current = candidate["slot"]["species"]
             if current == symbol or (current in required and freq[current] <= 1):
                 continue
@@ -97,10 +97,10 @@ def guarantee_full_coverage(wild):
             score += min(freq[current], 30)
             # deterministic ordering, prefer later slots for lower encounter probability
             eligible.append((score, candidate["map"], candidate["event"].get("base_label", ""),
-                             candidate["ix"], candidate))
+                             candidate["ix"], serial, candidate))
         if not eligible:
             raise ValueError(f"Não foi encontrado habitat/slot compatível para {symbol}")
-        _, _, _, _, chosen = max(eligible, key=lambda e: e[:4])
+        _, _, _, _, _, chosen = max(eligible, key=lambda e: e[:5])
         prior = chosen["slot"]["species"]
         chosen["slot"]["species"] = symbol
         freq[prior] -= 1
