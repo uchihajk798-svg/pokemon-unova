@@ -88,7 +88,7 @@ class UnovaTests(unittest.TestCase):
         result, count, fallback = patch_trainers(raw, self.available, self.mapping)
         self.assertEqual(sum(count.values()), 3)
         self.assertEqual(fallback, 0)
-        self.assertIn("WATCHOG\nLevel: 5", result)
+        self.assertIn("PATRAT\nLevel: 5", result)
         self.assertIn("ROGGENROLA\nLevel: 12", result)
         self.assertIn("DWEBBLE\nLevel: 14", result)
         self.assertEqual(patch_trainers(result, self.available, self.mapping)[0], result)
