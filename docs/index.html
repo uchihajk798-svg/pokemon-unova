@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#111b22" />
+  <title>Pokémon FireRed: Unova Edition | Jogar</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0f171d;--panel:#17232b;--border:#334450;--text:#f2f6f8;--soft:#b0c1ca;--lime:#a9de67;--orange:#ffa45d}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#20343d,#0f171d 65%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.5}
+    header,main,footer{width:min(900px,calc(100% - 32px));margin:auto}header{padding:48px 0 22px}header .tag{font-size:12px;color:var(--lime);letter-spacing:2.5px;font-weight:800;text-transform:uppercase}
+    h1{margin:10px 0;font-size:clamp(28px,6vw,55px);line-height:1.1;letter-spacing:-2px}h1 span{color:var(--lime)}
+    .lead{font-size:17px;max-width:660px;color:var(--soft)}main{padding-bottom:30px}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:17px;padding:24px;margin:18px 0;box-shadow:0 16px 36px #0711164d}
+    h2{margin:0 0 8px;font-size:22px}p{margin:0 0 16px;color:var(--soft)}
+    .step{font-size:11px;letter-spacing:1.6px;font-weight:800;color:var(--lime);text-transform:uppercase}
+    label{display:block;margin:15px 0 7px;font-weight:700;font-size:14px}
+    input[type=file]{display:block;width:100%;border:1px dashed #667e8e;padding:14px;border-radius:10px;color:var(--soft);background:#102029}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    button,a.link{border:0;display:inline-flex;justify-content:center;align-items:center;min-height:45px;border-radius:10px;padding:12px 18px;background:var(--lime);color:#17230c;font-weight:800;cursor:pointer;text-decoration:none;font-size:14px}
+    button:disabled{cursor:not-allowed;opacity:.45}button.secondary,a.link.secondary{background:#354955;color:white}
+    .status{border-left:4px solid var(--lime);padding:12px;background:#122b26;border-radius:6px;margin-top:18px;color:#dffac5;white-space:pre-wrap}
+    .status.error{border-color:var(--orange);background:#3e2b24;color:#ffe1cc}
+    #game{height:min(73vw,580px);min-height:280px;max-height:650px;background:#050808;border:1px solid #4b5d67;border-radius:12px;overflow:hidden;margin-top:14px}
+    #screen{display:none}footer{font-size:13px;color:var(--soft);padding:0 0 40px}a{color:var(--lime)}.fine{font-size:13px}
+    @media(max-width:650px){header{padding-top:26px}.panel{padding:17px}.buttons button{width:100%}#game{height:390px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="tag">Game Boy Advance • Projeto não oficial</div>
+  <h1>POKÉMON <span>UNOVA</span><br>FIRE RED EDITION</h1>
+  <p class="lead">A jornada de Kanto com Pokémon da quinta geração. Aplique um patch BPS à sua própria ROM de base compatível e jogue neste navegador.</p>
+</header>
+<main>
+  <section class="panel" aria-labelledby="title-apply">
+    <div class="step">01 — Arquivos locais</div>
+    <h2 id="title-apply">Preparar o jogo</h2>
+    <p>Os arquivos ficam <strong>somente no seu aparelho</strong>. Este site não contém, não hospeda e não envia ROMs comerciais. O patch requer a ROM <strong>compilada a partir da mesma versão limpa de pokefirered-expansion usada no build</strong>, não uma ROM retail comum de FireRed.</p>
+    <label for="rom">ROM base compatível (.gba)</label>
+    <input id="rom" type="file" accept=".gba,application/octet-stream" />
+    <label for="patch">Patch Pokémon Unova (.bps)</label>
+    <input id="patch" type="file" accept=".bps,application/octet-stream" />
+    <div class="buttons">
+      <button id="apply">Aplicar patch</button>
+      <button id="download" class="secondary" disabled>Salvar ROM modificada</button>
+      <button id="play" class="secondary" disabled>Jogar agora</button>
+    </div>
+    <div class="status" id="status" role="status">Selecione os dois arquivos para começar.</div>
+    <p class="fine" style="margin:18px 0 0">Encontre o patch na aba <a href="https://github.com/uchihajk798-svg/pokemon-unova/actions">Actions</a> do GitHub, no artefato <strong>pokemon-unova-bps</strong> da execução mais recente aprovada. A versão do patch e da base devem coincidir.</p>
+  </section>
+  <section id="screen" class="panel" aria-labelledby="game-title">
+    <div class="step">02 — Emulador</div>
+    <h2 id="game-title">Sua aventura</h2>
+    <p>Controles e salvamentos dependem do EmulatorJS. Se o carregamento falhar, use o arquivo modificado no mGBA.</p>
+    <div id="game" aria-label="Emulador Game Boy Advance"></div>
+  </section>
+  <section class="panel">
+    <div class="step">Ajuda rápida</div>
+    <h2>Como conseguir o patch?</h2>
+    <p>Abra o <a href="https://github.com/uchihajk798-svg/pokemon-unova">repositório</a>, entre em <a href="https://github.com/uchihajk798-svg/pokemon-unova/actions">Actions</a> e escolha a última execução aprovada. Baixe <strong>pokemon-unova-bps</strong> na seção Artifacts e extraia o arquivo <code>pokemon-unova.bps</code>.</p>
+    <p>Para construir a ROM base com o código-fonte, siga as instruções do <a href="https://github.com/uchihajk798-svg/pokemon-unova/blob/main/README.md">README</a>. Esta página é um utilitário; não significa que a campanha já tenha sido testada integralmente.</p>
+  </section>
+</main>
+<footer>
+  Projeto de fã, não afiliado à Nintendo, Game Freak ou The Pokémon Company. Emulação fornecida pelo projeto externo <a href="https://emulatorjs.org/">EmulatorJS</a>.
+</footer>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const romFile = $("rom"), patchFile = $("patch"), status = $("status");
+let output = null, gameBlobUrl = null;
+function feedback(message, error=false){status.textContent=message;status.className="status"+(error?" error":"");}
+const crcTable = (() => {
+  const table = new Uint32Array(256);
+  for (let i=0;i<256;i++){let c=i;for(let k=0;k<8;k++) c = (c&1)?(0xEDB88320^(c>>>1)):(c>>>1);table[i]=c>>>0;}
+  return table;
+})();
+function crc32(bytes){
+  let c=0xFFFFFFFF;for(let i=0;i<bytes.length;i++) c=crcTable[(c^bytes[i])&255]^(c>>>8);
+  return (c^0xFFFFFFFF)>>>0;
+}
+function u32(bytes, at){return (bytes[at] | (bytes[at+1]<<8) | (bytes[at+2]<<16) | (bytes[at+3]<<24))>>>0;}
+function applyBps(source, patch) {
+  if(patch.length<16 || String.fromCharCode(...patch.subarray(0,4))!=="BPS1") throw Error("O patch selecionado não é BPS1.");
+  if(crc32(patch.subarray(0,patch.length-4))!==u32(patch,patch.length-4)) throw Error("O checksum do BPS é inválido.");
+  let pos=4;
+  function readVar(){
+    let value=0,shift=1;
+    for(;;){
+      if(pos>=patch.length-12)throw Error("Patch truncado.");
+      const b=patch[pos++];
+      value += (b&127)*shift;
+      if(b&128) return value;
+      shift *= 128; value+=shift;
+      if(!Number.isSafeInteger(value))throw Error("Inteiro BPS inválido.");
+    }
+  }
+  const sourceSize=readVar(), targetSize=readVar(), metadataSize=readVar();
+  if(sourceSize!==source.length || crc32(source)!==u32(patch,patch.length-12)) throw Error("ROM base incorreta. Use o build de referência exato indicado no patch.");
+  if(targetSize > 128*1024*1024)throw Error("Tamanho alvo inesperado.");
+  pos+=metadataSize;if(pos>patch.length-12)throw Error("Metadados BPS inválidos.");
+  const dest=new Uint8Array(targetSize);
+  let cursor=0;
+  while(pos<patch.length-12){
+    const op=readVar(),length=Math.floor(op/4)+1,action=op%4;
+    if(cursor+length>targetSize)throw Error("Patch ultrapassa tamanho de destino.");
+    if(action===0){
+      if(cursor+length>source.length)throw Error("SourceRead fora da origem.");
+      dest.set(source.subarray(cursor,cursor+length),cursor);
+    }else if(action===1){
+      if(pos+length>patch.length-12)throw Error("TargetRead truncado.");
+      dest.set(patch.subarray(pos,pos+length),cursor);pos+=length;
+    }else{
+      throw Error("Este patch usa comandos BPS não suportados por este aplicador simplificado.");
+    }
+    cursor+=length;
+  }
+  if(cursor!==targetSize || crc32(dest)!==u32(patch,patch.length-8))throw Error("A ROM resultante falhou na verificação de integridade.");
+  return dest;
+}
+$("apply").addEventListener("click",async()=>{
+  $("apply").disabled=true;$("download").disabled=true;$("play").disabled=true;output=null;
+  try{
+    if(!romFile.files[0]||!patchFile.files[0])throw Error("Escolha a ROM base e o patch BPS.");
+    feedback("Verificando o patch e aplicando alterações localmente…");
+    await new Promise(resolve=>setTimeout(resolve,10));
+    const source=new Uint8Array(await romFile.files[0].arrayBuffer());
+    const patch=new Uint8Array(await patchFile.files[0].arrayBuffer());
+    output=applyBps(source,patch);
+    $("download").disabled=false;$("play").disabled=false;
+    feedback("Patch aplicado e CRC verificado. Você já pode baixar a ROM modificada ou jogar.");
+  }catch(err){feedback(err.message||String(err),true);}
+  finally{$("apply").disabled=false;}
+});
+$("download").addEventListener("click",()=>{
+  if(!output)return;
+  const url=URL.createObjectURL(new Blob([output],{type:"application/octet-stream"}));
+  const a=document.createElement("a");a.href=url;a.download="pokemon-unova.gba";a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),10000);
+});
+$("play").addEventListener("click",()=>{
+  if(!output)return;
+  $("play").disabled=true;
+  $("screen").style.display="block";
+  if(gameBlobUrl)URL.revokeObjectURL(gameBlobUrl);
+  gameBlobUrl=URL.createObjectURL(new Blob([output],{type:"application/octet-stream"}));
+  window.EJS_player="#game";
+  window.EJS_core="gba";
+  window.EJS_gameUrl=gameBlobUrl;
+  window.EJS_pathtodata="https://cdn.emulatorjs.org/stable/data/";
+  window.EJS_language="pt-BR";
+  const script=document.createElement("script");
+  script.src="https://cdn.emulatorjs.org/stable/data/loader.js";
+  script.onerror=()=>{feedback("EmulatorJS não carregou. Baixe o arquivo e tente no emulador mGBA.",true);$("play").disabled=false;};
+  document.body.appendChild(script);
+  $("screen").scrollIntoView({behavior:"smooth",block:"start"});
+  feedback("Arquivo preparado. O emulador externo está carregando.");
+});
+</script>
+</body>
+</html>
