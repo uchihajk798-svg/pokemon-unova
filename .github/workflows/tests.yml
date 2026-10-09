@@ -39,6 +39,8 @@ jobs:
         run: python3 tools/apply_unova.py --game-dir /tmp/firered-base --report /tmp/unova-report.json
       - name: Conferir referências de espécies
         run: python3 tools/validate_unova.py --game-dir /tmp/firered-base
+      - name: Checar compatibilidade dos HMs
+        run: python3 tools/validate_hms.py --game-dir /tmp/firered-base
       - name: Mostrar relatório (sem upload de ROM)
         run: cat /tmp/unova-report.json
 
