@@ -4,6 +4,18 @@ ROM hack experimental do FireRed de GBA, preservando Kanto e trocando o elenco p
 
 **Estado real (2026-10-09):** o código **compila** em GitHub Actions; os 156 Pokémon possuem slots de encontros de FireRed, os três iniciais são Snivy/Tepig/Oshawott e equipes de treinadores foram convertidas. **A campanha não foi testada integralmente em emulador**. Encontros e times ainda precisam de revisão de balanceamento; não se trata de versão final polida. A interface web está pronta para publicação, mas não é um link ativo até que a hospedagem seja habilitada.
 
+## 🎮 GBA Pocket — aplicativo de emulador GBA
+
+**[Abrir GBA Pocket](https://uchihajk798-svg.github.io/pokemon-unova/app/)**
+
+O novo app web progressivo (PWA) executa arquivos `.gba` locais no navegador pelo **EmulatorJS**. Possui controles de toque, biblioteca de jogos no IndexedDB, instalação na tela inicial, modo tela cheia e aplicação de patches `.bps` (SourceRead, TargetRead, SourceCopy e TargetCopy, com checksum CRC32).
+
+**Como usar:** abra o link, selecione sua ROM `.gba`, escolha um patch `.bps` se desejar e clique em **Jogar GBA**. No menu do emulador, use as ferramentas internas de salvar/carregar estados ou saves. A instalação é opcional: Android/Chrome pelo botão Instalar app; iPhone/Safari pelo menu Compartilhar → Adicionar à Tela de Início.
+
+**Limitações:** núcleo EmulatorJS servido por CDN (primeira inicialização depende de conexão). Saves e ROMs guardados no navegador podem desaparecer após limpar dados do site; faça backups de SAV. Não é um APK nativo, e o app não fornece jogos comerciais ou BIOS. Os arquivos selecionados não são enviados pelo código do app.
+
+Código em `docs/app/`; testes automatizados em `tests/test_patch.mjs` e `.github/workflows/gba-pocket.yml`.
+
 ## Baixar o patch BPS (sem ROM)
 
 1. Abra [Actions](https://github.com/uchihajk798-svg/pokemon-unova/actions).
