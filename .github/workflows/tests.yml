@@ -42,7 +42,7 @@ jobs:
       - name: Instalar dependências de compilação
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends build-essential binutils-arm-none-eabi libpng-dev
+          sudo apt-get install -y --no-install-recommends build-essential binutils-arm-none-eabi gcc-arm-none-eabi libpng-dev
       - name: Clonar base e compilador C para GBA
         run: |
           git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
