@@ -1,4 +1,4 @@
-name: Verificar Unova (sem ROM)
+name: Construir patch Pokémon Unova
 
 on:
   push:
@@ -48,10 +48,32 @@ jobs:
           git clone --depth=1 https://github.com/Faceplantfloor/pokefirered-expansion.git /tmp/firered-base
           git clone --depth=1 https://github.com/pret/agbcc.git /tmp/agbcc
           (cd /tmp/agbcc && ./build.sh && ./install.sh /tmp/firered-base)
+      - name: Compilar referência original localmente (não publicar)
+        run: |
+          make -C /tmp/firered-base -j2
+          cp /tmp/firered-base/pokefirered.gba /tmp/firered-original.gba
       - name: Substituir Pokémon por espécies de Unova
         run: python3 tools/apply_unova.py --game-dir /tmp/firered-base
-      - name: Compilar a ROM somente no ambiente temporário
-        run: make -C /tmp/firered-base -j2
-      - name: Confirmar que existe saída GBA
-        run: test -f /tmp/firered-base/pokefirered.gba
-      # NÃO use upload-artifact aqui; jamais publicar ROM comercial.
+      - name: Validar referências do projeto
+        run: python3 tools/validate_unova.py --game-dir /tmp/firered-base
+      - name: Compilar versão Unova sem publicar a ROM
+        run: |
+          make -C /tmp/firered-base -j2
+          test -f /tmp/firered-base/pokefirered.gba
+      - name: Criar patch diferencial BPS e validar checksum
+        run: |
+          python3 tools/bps.py create --base /tmp/firered-original.gba --modified /tmp/firered-base/pokefirered.gba --output dist/pokemon-unova.bps
+          python3 tools/bps.py verify --base /tmp/firered-original.gba --patch dist/pokemon-unova.bps
+          sha256sum /tmp/firered-original.gba | sed 's@/tmp/firered-original.gba@firered-original.gba@' > dist/base-sha256.txt
+          sha256sum dist/pokemon-unova.bps > dist/patch-sha256.txt
+      - name: Publicar SOMENTE patch BPS (nenhuma ROM)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokemon-unova-bps
+          path: |
+            dist/pokemon-unova.bps
+            dist/base-sha256.txt
+            dist/patch-sha256.txt
+          retention-days: 7
+          if-no-files-found: error
+
