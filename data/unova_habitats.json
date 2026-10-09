@@ -1,0 +1,1722 @@
+{
+  "description": "Tipagem e estágio inicial inferidos de gen_5_families.h; habitats de distribuição propostos heurísticos. Revisão de balanceamento necessária.",
+  "source": "Faceplantfloor/pokefirered-expansion",
+  "species": [
+    {
+      "national_id": 494,
+      "symbol": "SPECIES_VICTINI",
+      "types": [
+        "PSYCHIC",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 495,
+      "symbol": "SPECIES_SNIVY",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 496,
+      "symbol": "SPECIES_SERVINE",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 497,
+      "symbol": "SPECIES_SERPERIOR",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 2,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 498,
+      "symbol": "SPECIES_TEPIG",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 499,
+      "symbol": "SPECIES_PIGNITE",
+      "types": [
+        "FIRE",
+        "FIGHTING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 500,
+      "symbol": "SPECIES_EMBOAR",
+      "types": [
+        "FIRE",
+        "FIGHTING"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 501,
+      "symbol": "SPECIES_OSHAWOTT",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 502,
+      "symbol": "SPECIES_DEWOTT",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 503,
+      "symbol": "SPECIES_SAMUROTT",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 2,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 504,
+      "symbol": "SPECIES_PATRAT",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 505,
+      "symbol": "SPECIES_WATCHOG",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 506,
+      "symbol": "SPECIES_LILLIPUP",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 507,
+      "symbol": "SPECIES_HERDIER",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 508,
+      "symbol": "SPECIES_STOUTLAND",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 509,
+      "symbol": "SPECIES_PURRLOIN",
+      "types": [
+        "DARK",
+        "DARK"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 510,
+      "symbol": "SPECIES_LIEPARD",
+      "types": [
+        "DARK",
+        "DARK"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 511,
+      "symbol": "SPECIES_PANSAGE",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 512,
+      "symbol": "SPECIES_SIMISAGE",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 513,
+      "symbol": "SPECIES_PANSEAR",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 514,
+      "symbol": "SPECIES_SIMISEAR",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 515,
+      "symbol": "SPECIES_PANPOUR",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 516,
+      "symbol": "SPECIES_SIMIPOUR",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 517,
+      "symbol": "SPECIES_MUNNA",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 518,
+      "symbol": "SPECIES_MUSHARNA",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 519,
+      "symbol": "SPECIES_PIDOVE",
+      "types": [
+        "NORMAL",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 520,
+      "symbol": "SPECIES_TRANQUILL",
+      "types": [
+        "NORMAL",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 521,
+      "symbol": "SPECIES_UNFEZANT",
+      "types": [
+        "NORMAL",
+        "FLYING"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 522,
+      "symbol": "SPECIES_BLITZLE",
+      "types": [
+        "ELECTRIC",
+        "ELECTRIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 523,
+      "symbol": "SPECIES_ZEBSTRIKA",
+      "types": [
+        "ELECTRIC",
+        "ELECTRIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 524,
+      "symbol": "SPECIES_ROGGENROLA",
+      "types": [
+        "ROCK",
+        "ROCK"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 525,
+      "symbol": "SPECIES_BOLDORE",
+      "types": [
+        "ROCK",
+        "ROCK"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 526,
+      "symbol": "SPECIES_GIGALITH",
+      "types": [
+        "ROCK",
+        "ROCK"
+      ],
+      "stage": 2,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 527,
+      "symbol": "SPECIES_WOOBAT",
+      "types": [
+        "PSYCHIC",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 528,
+      "symbol": "SPECIES_SWOOBAT",
+      "types": [
+        "PSYCHIC",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 529,
+      "symbol": "SPECIES_DRILBUR",
+      "types": [
+        "GROUND",
+        "GROUND"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 530,
+      "symbol": "SPECIES_EXCADRILL",
+      "types": [
+        "GROUND",
+        "STEEL"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 531,
+      "symbol": "SPECIES_AUDINO",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 532,
+      "symbol": "SPECIES_TIMBURR",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 533,
+      "symbol": "SPECIES_GURDURR",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 534,
+      "symbol": "SPECIES_CONKELDURR",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 535,
+      "symbol": "SPECIES_TYMPOLE",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 536,
+      "symbol": "SPECIES_PALPITOAD",
+      "types": [
+        "WATER",
+        "GROUND"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 537,
+      "symbol": "SPECIES_SEISMITOAD",
+      "types": [
+        "WATER",
+        "GROUND"
+      ],
+      "stage": 2,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 538,
+      "symbol": "SPECIES_THROH",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 539,
+      "symbol": "SPECIES_SAWK",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 540,
+      "symbol": "SPECIES_SEWADDLE",
+      "types": [
+        "BUG",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 541,
+      "symbol": "SPECIES_SWADLOON",
+      "types": [
+        "BUG",
+        "GRASS"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 542,
+      "symbol": "SPECIES_LEAVANNY",
+      "types": [
+        "BUG",
+        "GRASS"
+      ],
+      "stage": 2,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 543,
+      "symbol": "SPECIES_VENIPEDE",
+      "types": [
+        "BUG",
+        "POISON"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 544,
+      "symbol": "SPECIES_WHIRLIPEDE",
+      "types": [
+        "BUG",
+        "POISON"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 545,
+      "symbol": "SPECIES_SCOLIPEDE",
+      "types": [
+        "BUG",
+        "POISON"
+      ],
+      "stage": 2,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 546,
+      "symbol": "SPECIES_COTTONEE",
+      "types": [
+        "GRASS",
+        "FAIRY"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 547,
+      "symbol": "SPECIES_WHIMSICOTT",
+      "types": [
+        "GRASS",
+        "FAIRY"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 548,
+      "symbol": "SPECIES_PETILIL",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 549,
+      "symbol": "SPECIES_LILLIGANT",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 550,
+      "symbol": "SPECIES_BASCULIN_RED_STRIPED",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 551,
+      "symbol": "SPECIES_SANDILE",
+      "types": [
+        "GROUND",
+        "DARK"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 552,
+      "symbol": "SPECIES_KROKOROK",
+      "types": [
+        "GROUND",
+        "DARK"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 553,
+      "symbol": "SPECIES_KROOKODILE",
+      "types": [
+        "GROUND",
+        "DARK"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 554,
+      "symbol": "SPECIES_DARUMAKA",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 555,
+      "symbol": "SPECIES_DARMANITAN_STANDARD",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 556,
+      "symbol": "SPECIES_MARACTUS",
+      "types": [
+        "GRASS",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 557,
+      "symbol": "SPECIES_DWEBBLE",
+      "types": [
+        "BUG",
+        "ROCK"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 558,
+      "symbol": "SPECIES_CRUSTLE",
+      "types": [
+        "BUG",
+        "ROCK"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 559,
+      "symbol": "SPECIES_SCRAGGY",
+      "types": [
+        "DARK",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 560,
+      "symbol": "SPECIES_SCRAFTY",
+      "types": [
+        "DARK",
+        "FIGHTING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 561,
+      "symbol": "SPECIES_SIGILYPH",
+      "types": [
+        "PSYCHIC",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 562,
+      "symbol": "SPECIES_YAMASK",
+      "types": [
+        "GHOST",
+        "GHOST"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 563,
+      "symbol": "SPECIES_COFAGRIGUS",
+      "types": [
+        "GHOST",
+        "GHOST"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 564,
+      "symbol": "SPECIES_TIRTOUGA",
+      "types": [
+        "WATER",
+        "ROCK"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 565,
+      "symbol": "SPECIES_CARRACOSTA",
+      "types": [
+        "WATER",
+        "ROCK"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 566,
+      "symbol": "SPECIES_ARCHEN",
+      "types": [
+        "ROCK",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 567,
+      "symbol": "SPECIES_ARCHEOPS",
+      "types": [
+        "ROCK",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 568,
+      "symbol": "SPECIES_TRUBBISH",
+      "types": [
+        "POISON",
+        "POISON"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 569,
+      "symbol": "SPECIES_GARBODOR",
+      "types": [
+        "POISON",
+        "POISON"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 570,
+      "symbol": "SPECIES_ZORUA",
+      "types": [
+        "DARK",
+        "DARK"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 571,
+      "symbol": "SPECIES_ZOROARK",
+      "types": [
+        "DARK",
+        "DARK"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 572,
+      "symbol": "SPECIES_MINCCINO",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 573,
+      "symbol": "SPECIES_CINCCINO",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 574,
+      "symbol": "SPECIES_GOTHITA",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 575,
+      "symbol": "SPECIES_GOTHORITA",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 576,
+      "symbol": "SPECIES_GOTHITELLE",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 577,
+      "symbol": "SPECIES_SOLOSIS",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 578,
+      "symbol": "SPECIES_DUOSION",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 579,
+      "symbol": "SPECIES_REUNICLUS",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 580,
+      "symbol": "SPECIES_DUCKLETT",
+      "types": [
+        "WATER",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 581,
+      "symbol": "SPECIES_SWANNA",
+      "types": [
+        "WATER",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 582,
+      "symbol": "SPECIES_VANILLITE",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 583,
+      "symbol": "SPECIES_VANILLISH",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 584,
+      "symbol": "SPECIES_VANILLUXE",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 585,
+      "symbol": "SPECIES_DEERLING_SPRING",
+      "types": [
+        "NORMAL",
+        "GRASS"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 586,
+      "symbol": "SPECIES_SAWSBUCK_SPRING",
+      "types": [
+        "NORMAL",
+        "GRASS"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 587,
+      "symbol": "SPECIES_EMOLGA",
+      "types": [
+        "ELECTRIC",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 588,
+      "symbol": "SPECIES_KARRABLAST",
+      "types": [
+        "BUG",
+        "BUG"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 589,
+      "symbol": "SPECIES_ESCAVALIER",
+      "types": [
+        "BUG",
+        "STEEL"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 590,
+      "symbol": "SPECIES_FOONGUS",
+      "types": [
+        "GRASS",
+        "POISON"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 591,
+      "symbol": "SPECIES_AMOONGUSS",
+      "types": [
+        "GRASS",
+        "POISON"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 592,
+      "symbol": "SPECIES_FRILLISH",
+      "types": [
+        "WATER",
+        "GHOST"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 593,
+      "symbol": "SPECIES_JELLICENT",
+      "types": [
+        "WATER",
+        "GHOST"
+      ],
+      "stage": 1,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 594,
+      "symbol": "SPECIES_ALOMOMOLA",
+      "types": [
+        "WATER",
+        "WATER"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 595,
+      "symbol": "SPECIES_JOLTIK",
+      "types": [
+        "BUG",
+        "ELECTRIC"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 596,
+      "symbol": "SPECIES_GALVANTULA",
+      "types": [
+        "BUG",
+        "ELECTRIC"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 597,
+      "symbol": "SPECIES_FERROSEED",
+      "types": [
+        "GRASS",
+        "STEEL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 598,
+      "symbol": "SPECIES_FERROTHORN",
+      "types": [
+        "GRASS",
+        "STEEL"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 599,
+      "symbol": "SPECIES_KLINK",
+      "types": [
+        "STEEL",
+        "STEEL"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 600,
+      "symbol": "SPECIES_KLANG",
+      "types": [
+        "STEEL",
+        "STEEL"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 601,
+      "symbol": "SPECIES_KLINKLANG",
+      "types": [
+        "STEEL",
+        "STEEL"
+      ],
+      "stage": 2,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 602,
+      "symbol": "SPECIES_TYNAMO",
+      "types": [
+        "ELECTRIC",
+        "ELECTRIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 603,
+      "symbol": "SPECIES_EELEKTRIK",
+      "types": [
+        "ELECTRIC",
+        "ELECTRIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 604,
+      "symbol": "SPECIES_EELEKTROSS",
+      "types": [
+        "ELECTRIC",
+        "ELECTRIC"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 605,
+      "symbol": "SPECIES_ELGYEM",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 606,
+      "symbol": "SPECIES_BEHEEYEM",
+      "types": [
+        "PSYCHIC",
+        "PSYCHIC"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 607,
+      "symbol": "SPECIES_LITWICK",
+      "types": [
+        "GHOST",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 608,
+      "symbol": "SPECIES_LAMPENT",
+      "types": [
+        "GHOST",
+        "FIRE"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 609,
+      "symbol": "SPECIES_CHANDELURE",
+      "types": [
+        "GHOST",
+        "FIRE"
+      ],
+      "stage": 2,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 610,
+      "symbol": "SPECIES_AXEW",
+      "types": [
+        "DRAGON",
+        "DRAGON"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 611,
+      "symbol": "SPECIES_FRAXURE",
+      "types": [
+        "DRAGON",
+        "DRAGON"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 612,
+      "symbol": "SPECIES_HAXORUS",
+      "types": [
+        "DRAGON",
+        "DRAGON"
+      ],
+      "stage": 2,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 613,
+      "symbol": "SPECIES_CUBCHOO",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 614,
+      "symbol": "SPECIES_BEARTIC",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 615,
+      "symbol": "SPECIES_CRYOGONAL",
+      "types": [
+        "ICE",
+        "ICE"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 616,
+      "symbol": "SPECIES_SHELMET",
+      "types": [
+        "BUG",
+        "BUG"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 617,
+      "symbol": "SPECIES_ACCELGOR",
+      "types": [
+        "BUG",
+        "BUG"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 618,
+      "symbol": "SPECIES_STUNFISK",
+      "types": [
+        "GROUND",
+        "ELECTRIC"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": false
+    },
+    {
+      "national_id": 619,
+      "symbol": "SPECIES_MIENFOO",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 620,
+      "symbol": "SPECIES_MIENSHAO",
+      "types": [
+        "FIGHTING",
+        "FIGHTING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 621,
+      "symbol": "SPECIES_DRUDDIGON",
+      "types": [
+        "DRAGON",
+        "DRAGON"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 622,
+      "symbol": "SPECIES_GOLETT",
+      "types": [
+        "GROUND",
+        "GHOST"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 623,
+      "symbol": "SPECIES_GOLURK",
+      "types": [
+        "GROUND",
+        "GHOST"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 624,
+      "symbol": "SPECIES_PAWNIARD",
+      "types": [
+        "DARK",
+        "STEEL"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 625,
+      "symbol": "SPECIES_BISHARP",
+      "types": [
+        "DARK",
+        "STEEL"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 626,
+      "symbol": "SPECIES_BOUFFALANT",
+      "types": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 627,
+      "symbol": "SPECIES_RUFFLET",
+      "types": [
+        "NORMAL",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 628,
+      "symbol": "SPECIES_BRAVIARY",
+      "types": [
+        "NORMAL",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 629,
+      "symbol": "SPECIES_VULLABY",
+      "types": [
+        "DARK",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 630,
+      "symbol": "SPECIES_MANDIBUZZ",
+      "types": [
+        "DARK",
+        "FLYING"
+      ],
+      "stage": 1,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 631,
+      "symbol": "SPECIES_HEATMOR",
+      "types": [
+        "FIRE",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": false
+    },
+    {
+      "national_id": 632,
+      "symbol": "SPECIES_DURANT",
+      "types": [
+        "BUG",
+        "STEEL"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 633,
+      "symbol": "SPECIES_DEINO",
+      "types": [
+        "DARK",
+        "DRAGON"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 634,
+      "symbol": "SPECIES_ZWEILOUS",
+      "types": [
+        "DARK",
+        "DRAGON"
+      ],
+      "stage": 1,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 635,
+      "symbol": "SPECIES_HYDREIGON",
+      "types": [
+        "DARK",
+        "DRAGON"
+      ],
+      "stage": 2,
+      "habitat": "cave",
+      "special": false
+    },
+    {
+      "national_id": 636,
+      "symbol": "SPECIES_LARVESTA",
+      "types": [
+        "BUG",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 637,
+      "symbol": "SPECIES_VOLCARONA",
+      "types": [
+        "BUG",
+        "FIRE"
+      ],
+      "stage": 1,
+      "habitat": "forest",
+      "special": false
+    },
+    {
+      "national_id": 638,
+      "symbol": "SPECIES_COBALION",
+      "types": [
+        "STEEL",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": true
+    },
+    {
+      "national_id": 639,
+      "symbol": "SPECIES_TERRAKION",
+      "types": [
+        "ROCK",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": true
+    },
+    {
+      "national_id": 640,
+      "symbol": "SPECIES_VIRIZION",
+      "types": [
+        "GRASS",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "forest",
+      "special": true
+    },
+    {
+      "national_id": 641,
+      "symbol": "SPECIES_TORNADUS_INCARNATE",
+      "types": [
+        "FLYING",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 642,
+      "symbol": "SPECIES_THUNDURUS_INCARNATE",
+      "types": [
+        "ELECTRIC",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 643,
+      "symbol": "SPECIES_RESHIRAM",
+      "types": [
+        "DRAGON",
+        "FIRE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 644,
+      "symbol": "SPECIES_ZEKROM",
+      "types": [
+        "DRAGON",
+        "ELECTRIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 645,
+      "symbol": "SPECIES_LANDORUS_INCARNATE",
+      "types": [
+        "GROUND",
+        "FLYING"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 646,
+      "symbol": "SPECIES_KYUREM",
+      "types": [
+        "DRAGON",
+        "ICE"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 647,
+      "symbol": "SPECIES_KELDEO_ORDINARY",
+      "types": [
+        "WATER",
+        "FIGHTING"
+      ],
+      "stage": 0,
+      "habitat": "water",
+      "special": true
+    },
+    {
+      "national_id": 648,
+      "symbol": "SPECIES_MELOETTA_ARIA",
+      "types": [
+        "NORMAL",
+        "PSYCHIC"
+      ],
+      "stage": 0,
+      "habitat": "land",
+      "special": true
+    },
+    {
+      "national_id": 649,
+      "symbol": "SPECIES_GENESECT",
+      "types": [
+        "BUG",
+        "STEEL"
+      ],
+      "stage": 0,
+      "habitat": "cave",
+      "special": true
+    }
+  ]
+}
