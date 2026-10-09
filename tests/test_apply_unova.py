@@ -107,7 +107,7 @@ class UnovaTests(unittest.TestCase):
             "=== TRAINER_LEADER_BROCK ===\\nName: BROCK\\nClass: Leader\\n\\n"
             "Geodude\\nLevel: 12\\nIVs: 0 HP\\n- Tackle\\n- Defense Curl\\n\\n"
             "Onix\\nLevel: 14\\nIVs: 0 HP\\n- Bind\\n- Rock Tomb\\n"
-        ).replace("\\\\n", "\\n")
+        ).replace("\\n", "\n")
         result, changes, _ = patch_trainers(raw, self.available, self.mapping)
         self.assertIn("ROGGENROLA", result)
         self.assertIn("DWEBBLE", result)
