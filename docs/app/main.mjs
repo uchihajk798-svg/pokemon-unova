@@ -262,7 +262,7 @@ window.addEventListener("message", ev => {
   if (ev.origin !== location.origin || ev.source !== elements.iframe.contentWindow) return;
   const msg = ev.data;
   if (!msg || msg.source !== "gba-pocket-player") return;
-  if (msg.type === "ready" && pendingGame) {
+  if (msg.type === "ready" && pendingGame && pendingGame.bytes) {
     const bytes = pendingGame.bytes;
     elements.iframe.contentWindow.postMessage({
       source: "gba-pocket-host",
